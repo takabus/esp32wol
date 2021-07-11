@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>ホーム|ESP32WOL</title>
+
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        .fuwafuwa {
+            animation: fuwafuwa 6s infinite ease-in-out .6s alternate;
+            display: inline-block;
+            transition: 1.5s ease-in-out;
+            width: 70px;
+            margin-top: 15px;
+        }
+
+        @keyframes fuwafuwa {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(0, -5px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="container" style="max-width: 1000px;">
+            <h3 class="mt-3">
+                <img class="fuwafuwa"
+                    src="data:image/jpeg;base64,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"
+                    height="50px">
+                <span style="color:#1fd857">ESP32</span> <span style="color:#ff9900">WakeOnLAN</span></h3>
+            <hr>
+            <div v-show="alert.type" :class="[alert.type]" class="alert" role="alert">
+                {{alert.msg}}
+            </div>
+
+            <div class="form-group">
+                <h3>MACアドレスを指定して起動</h3>
+                <input v-model="selectItem.mac" type="text" class="form-control" name="" id="mac"
+                    aria-describedby="helpId" placeholder="XX:XX:XX:XX:XX:XX">
+                <p id="helpId" class="form-text text-muted">MACアドレスを指定して、対象のコンピューターを起動します。 </p>
+                <button @click="wolAlert" class="btn btn-secondary w-100" :class="{'btn-danger':validMac}"
+                    :disabled="!validMac">マジックパケットを送信する</button>
+
+            </div>
+            <div class="form-group mt-3">
+                <h3>リストから選んで起動</h3>
+                <p id="listhelp" class="form-text text-muted">クリックしたマシンを起動します。</p>
+
+                <table class="table table-hover" aria-describedby="listhelp">
+                    <thead>
+                        <tr>
+                            <th>ホスト名</th>
+                            <th>MACアドレス</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in maclist" @click="selectMac(item)" style="cursor:pointer">
+                            <td scope="row">{{item.name}}</td>
+                            <td>{{item.mac}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="modal " tabindex="-1" id="myModal">
+            <div class="modal-dialog  modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">確認</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>起動してよろしいですか？</p>
+                        <p><b>ホスト名：{{selectItem.name}}</b></p>
+                        <p><b>MACアドレス：{{selectItem.mac}}</b></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-lg btn-danger w-100" @click="sendMac">起動する</button>
+                        <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">キャンセル</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                selectItem: { name: "", mac: "" },
+                maclist: [
+                    { name: "host1", mac: "xx:xx:xx:xx:xx:xx" },
+                    { name: "host2", mac: "xx:xx:xx:xx:xx:xx" },
+                    { name: "host3", mac: "xx:xx:xx:xx:xx:xx" },
+
+                ],
+                alert: {
+                    type: null,
+                    msg: null,
+                },
+                // モーダル
+                myModal,
+            },
+            mounted() {
+                // モーダルウィンドウを初期化する
+                this.myModal = new bootstrap.Modal(document.getElementById('myModal'), null);
+            },
+            computed: {
+                // MACアドレスが有効かバリデーションする
+                validMac: function () {
+                    // MACアドレスの正規表現を指定する
+                    let filterStr = /^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$/i;
+                    // チェックして、一致していればtrueを返す
+                    return filterStr.test(this.selectItem.mac);
+                }
+            },
+            methods: {
+                // WOL実行確認ダイアログを表示する
+                wolAlert() {
+                    // モーダルを表示する
+                    this.myModal.show();
+                },
+                // WOLを実行する
+                sendMac: function () {
+
+                    // POSTデータを作成する
+
+                    var formdata = new FormData();
+                    formdata.append("mac", this.selectItem.mac);
+
+                    // POSTする
+
+                    axios.post("/api/wol", formdata).then((res) => {
+                        if (res.data.status == "ok") {
+                            this.alert.type = "alert-success";
+                            this.alert.msg = "実行しました！";
+                        } else {
+                            this.alert.type = "alert-danger";
+                            this.alert.msg = "エラーが発生しました";
+                        }
+                    }).catch((err) => {
+                        this.alert.type = "alert-danger";
+                        this.alert.msg = "エラーが発生しました[例外]";
+                    }).finally(() => {
+                        this.myModal.hide();
+                    });
+                },
+                // リストから起動するマシンを選択する
+                selectMac(item) {
+                    this.selectItem = JSON.parse(JSON.stringify(item));
+                    this.wolAlert();
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
